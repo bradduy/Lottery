@@ -1,4 +1,4 @@
-pragma solidity ^0.4.0;
+pragma solidity ^0.4.21;
 
 interface Regulator {
     function checkValue(uint amount) returns (bool);
@@ -44,15 +44,6 @@ contract Voting {
   }
 }
 
-    function pickNumber(uint amount) public payable {
-        if (checkAmount(amount)){
-                function random() private view returns (uint) {
-                    return uint8(uint256(keccak256(block.timestamp, block.difficulty))%10);
-                }
-            }
-        }
-    }
-}
 
 
 contract MyContract is Voting(1) {
@@ -62,7 +53,7 @@ contract MyContract is Voting(1) {
         name = newName;
     }
     // Get candidate's name
-    function getName() returns (string) {
+    function getName() view returns (string) {
         return name;
     }
 }
