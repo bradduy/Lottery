@@ -42,18 +42,12 @@ contract Voting {
         return false;
     }
   }
-}
-
-
-
-contract MyContract is Voting(1) {
-    string private name;
-    //Set candidate's name
-    function setName(string newName) {
-        name = newName;
+    function pickNumber(uint amount) public payable {
+        if (checkAmount(amount)){
+            value -= amount;
+        }
     }
-    // Get candidate's name
-    function getName() view returns (string) {
-        return name;
+    function random() private view returns (uint) {
+        return uint8(uint256(keccak256(block.timestamp, block.difficulty))%10);
     }
-}
+}`
