@@ -43,11 +43,25 @@ contract Voting {
     }
   }
     function pickNumber(uint amount) public payable {
-        if (checkAmount(amount)){
+        if (checkAmount(amount)) {
             value -= amount;
         }
     }
     function random() private view returns (uint) {
         return uint8(uint256(keccak256(block.timestamp, block.difficulty))%10);
     }
-}`
+}
+
+
+
+contract MyContract is Voting(1) {
+    string private name;
+    //Set candidate's name
+    function setName(string newName) {
+        name = newName;
+    }
+    // Get candidate's name
+    function getName() view returns (string) {
+        return name;
+    }
+}
